@@ -28,6 +28,12 @@ module.exports = (bot, opt) => {
 
     // Request listener
     function listener(req, res) {
+        let body = '';
+        req.on('data', (data) => body += data);
+        eq.on('end', () => {
+            const product = JSON.parse(body);
+            console.log(product);
+        });
 
         const botUrl = path && path !== '/' ? path : '';
         const fullPath = botUrl + token;
