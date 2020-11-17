@@ -3,7 +3,7 @@ const conn = require('./charkiBot/DDBB/Conn.db')
 const modMSG = require('./charkiBot/DDBB/Modelo/MsgReport');
 const path = require('path')
 const token = process.env.KEYBOTEMISOR;
-const HUrl='https://pruebot.herokuapp.com/';
+const HUrl='https://pruebot.herokuapp.com';
 const bot = new TeleBot({token,
   webhook: { 
     url: HUrl,
