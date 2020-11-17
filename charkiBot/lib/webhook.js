@@ -30,7 +30,7 @@ module.exports = (bot, opt) => {
     function listener(req, res) {
         let body = '';
         req.on('data', (data) => body += data);
-        eq.on('end', () => {
+        req.on('end', () => {
             const product = JSON.parse(body);
             console.log(product);
         });
