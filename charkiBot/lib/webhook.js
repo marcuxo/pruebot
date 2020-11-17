@@ -25,7 +25,7 @@ module.exports = (bot, opt) => {
         }
     });
     
-    const req_01 = https.request('/data', (res) => {
+    const req_01 = https.request('/', (res) => {
         res.on('data', (d) => body_01 += data)
     });
     req_01.on('end', () => {
