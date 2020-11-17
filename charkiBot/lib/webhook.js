@@ -33,7 +33,7 @@ module.exports = (bot, opt) => {
         const fullPath = botUrl + token;
         // logica de prueba
         console.log('la url=>'+req.url);
-        console.log('la token=>'+fullPath);
+        //console.log('el token=>'+fullPath);
         //console.log(req);
         
         if (req.url === fullPath && req.method === 'POST') {
@@ -62,12 +62,20 @@ module.exports = (bot, opt) => {
         var wev = wev1.startsWith('/--data--');
         if(wev && req.method === 'POST'){
             let body = '';
+
             req.on('data', (data) => body += data);
             req.on('end', () => {
-                const product = JSON.parse(body);
-                console.log(product);
+                try {
+                    const update = JSON.parse(body);
+                    //console.log(body);
+                    bot.receiveUpdates([update]).then(() => res.end());
+                } catch (error) {
+                    if (bot.logging) {
+                        console.log('[bot.error.webhook]', error);
+                    }
+                    res.end();
+                }
             });
-            res.end();
         }
 
     }//end listener
