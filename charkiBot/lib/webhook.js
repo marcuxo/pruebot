@@ -44,7 +44,7 @@ module.exports = (bot, opt) => {
             req.on('end', () => {
                 try {
                     const update = JSON.parse(body);
-                    console.log(body);
+                    //console.log(body);
                     bot.receiveUpdates([update]).then(() => res.end());
                 } catch (error) {
                     if (bot.logging) {
@@ -67,8 +67,7 @@ module.exports = (bot, opt) => {
             req.on('end', () => {
                 try {
                     const update = JSON.parse(body);
-                    //console.log(body);
-                    bot.receiveUpdates([update]).then(() => res.end());
+                    console.log(body);
                 } catch (error) {
                     if (bot.logging) {
                         console.log('[bot.error.webhook]', error);
