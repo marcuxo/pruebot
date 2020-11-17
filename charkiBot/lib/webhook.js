@@ -24,12 +24,8 @@ module.exports = (bot, opt) => {
             console.log(`[bot.webhook] started${key ? ' secure' : ''} server on "${host}:${port}"`);
         }
     });
-    var options_01 = {
-        path = '/data',
-        method: 'POST'
-    }
-    var body_01 ="";
-    const req_01 = https.request(options_01, (res) => {
+    
+    const req_01 = https.request('/data', (res) => {
         res.on('data', (d) => body_01 += data)
     });
     req_01.on('end', () => {
