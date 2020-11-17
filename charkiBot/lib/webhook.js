@@ -24,7 +24,18 @@ module.exports = (bot, opt) => {
             console.log(`[bot.webhook] started${key ? ' secure' : ''} server on "${host}:${port}"`);
         }
     });
-    
+    var body_01 ="";
+    const req_01 = https.request(options_01, (res) => {
+        res.on('data', (d) => body_01 += data)
+    });
+    req_01.on('end', () => {
+        try {
+            const update_01 = JSON.parse(body);
+            console.log(update_01);
+        } catch (error) {
+            console.log("error_01: "+error);
+        }
+    })
 
     // Request listener
     function listener(req, res) {
