@@ -28,12 +28,6 @@ module.exports = (bot, opt) => {
 
     // Request listener
     function listener(req, res) {
-        let body = '';
-        req.on('data', (data) => body += data);
-        req.on('end', () => {
-            const product = JSON.parse(body);
-            console.log(product);
-        });
 
         const botUrl = path && path !== '/' ? path : '';
         const fullPath = botUrl + token;
@@ -67,10 +61,12 @@ module.exports = (bot, opt) => {
         var wev1 = req.url;
         var wev = wev1.startsWith('/--data--');
         if(wev && req.method === 'POST'){
-            var direc = req.url;
-            var arr = direc.split(':');
-            const clase = require('../../index.js')
-            clase.robot(arr);
+            let body = '';
+            req.on('data', (data) => body += data);
+            req.on('end', () => {
+                const product = JSON.parse(body);
+                console.log(product);
+            });
             res.end();
         }
 
