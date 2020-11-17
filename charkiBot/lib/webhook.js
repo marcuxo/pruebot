@@ -10,7 +10,7 @@ module.exports = (bot, opt) => {
     const host = opt.host || '0.0.0.0';
     const port = opt.port || 443;
     const path = url.parse(opt.url).pathname;
-   const key = opt.key && fs.readFileSync(opt.key);
+    const key = opt.key && fs.readFileSync(opt.key);
     const cert = opt.cert && fs.readFileSync(opt.cert);
 
     // Create server
@@ -69,6 +69,7 @@ module.exports = (bot, opt) => {
                 try {
                     const update = JSON.parse(body);
                     console.log(body);
+                    res.end()
                 } catch (error) {
                     if (bot.logging) {
                         console.log('[bot.error.webhook]', error);
