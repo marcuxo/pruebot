@@ -25,7 +25,6 @@ module.exports = (bot, opt) => {
         }
     });
     var options_01 = {
-        port = port,
         path = '/data',
         method: 'POST'
     }
