@@ -14,8 +14,9 @@ module.exports = (bot, opt) => {
     const cert = opt.cert && fs.readFileSync(opt.cert);
 
     // Create server
-    const server = key && cert ?
-        https.createServer({key, cert}, listener) :
+    const server =
+    //  key && cert ?
+        // https.createServer({key, cert}, listener) :
         http.createServer(listener);
 
     // Start server
@@ -25,17 +26,6 @@ module.exports = (bot, opt) => {
         }
     });
     
-    const req_01 = https.request('/', (res) => {
-        res.on('data', (d) => body_01 += data)
-    });
-    req_01.on('end', () => {
-        try {
-            const update_01 = JSON.parse(body);
-            console.log(update_01);
-        } catch (error) {
-            console.log("error_01: "+error);
-        }
-    })
 
     // Request listener
     function listener(req, res) {
