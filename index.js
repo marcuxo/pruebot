@@ -9,7 +9,7 @@ const bot = new TeleBot({token,
   webhook: { 
     url: HUrl,
     host: '0.0.0.0', 
-    port: process.env.PORT || 443, 
+    port: process.env.PORT, 
     maxConnections: 40
     },
   allowedUpdates: [],
