@@ -5,6 +5,7 @@ const path = require('path')
 const token = process.env.KEYBOTEMISOR;
 const HUrl='https://pruebot.herokuapp.com';
 const bot = new TeleBot({token,
+  // comentario
   webhook: { 
     url: HUrl,
     host: '0.0.0.0', 
